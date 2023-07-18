@@ -1,10 +1,11 @@
-FROM ubuntu:latest
+# Use the official Prometheus base image
+FROM prom/prometheus:2.28.0
 
-COPY prometheus-2.28.0.linux-amd64.tar.gz  /
+# Copy the Prometheus configuration file to the container
+COPY prometheus.yml /etc/prometheus/
 
-RUN tar -xvzf /prometheus-2.28.0.linux-amd64.tar.gz
-
+# Expose the Prometheus server port (default is 9090)
 EXPOSE 9090
 
-CMD prometheus-2.28.0.linux-amd64/./prometheus --config.file=prometheus-
-2.28.0.linux-amd64/prometheus.yml
+# Start the Prometheus server
+CMD [ "--config.file=/etc/prometheus/prometheus.yml" ]
