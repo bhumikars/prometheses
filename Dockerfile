@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM ubuntu:latest
 
 COPY prometheus-2.28.0.linux-amd64.tar.gz  /
 
